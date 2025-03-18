@@ -5,8 +5,10 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 import io
 import typer
-from typing import IO
+from typing import IO, Annotated
 from pathlib import Path
+from rich import print
+
 
 def convert_jpg_to_pdf(jpg_path):
     image = Image.open(jpg_path).convert('RGB')
@@ -36,11 +38,15 @@ def combine_files_from_folder_to_stream(source: Path, target: Path | IO[any]):
             pdf_files.append(pdf_bytes)
         elif file.lower().endswith('.pdf'):
             pdf_files.append(file_path)
+        print(f"Appended '{file_path}'")
 
     merge_pdfs(pdf_files, target)
     
 
-def combine_files_from_folder(source: Path, target: Path ):
+def combine_files_from_folder(
+    source: Annotated[Path, typer.Argument(help="Path to the source folder")],
+    target: Annotated[Path, typer.Argument(help="Target PDF file to create")],
+):
     """
     Combine JPG, PNG, PDF files from source folder into one PDF target file.
     """
