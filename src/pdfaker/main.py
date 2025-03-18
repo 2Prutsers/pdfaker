@@ -47,6 +47,10 @@ def combine_files_from_folder(source: Path, target: Path ):
     combine_files_from_folder_to_stream(source=source, target=target)
     print(f"Combined PDF created successfully at '{target}'")
     
-    
-if __name__ == "__main__":
+
+def main():
     typer.run(combine_files_from_folder)
+
+if __name__ == "__main__":
+    main()
+

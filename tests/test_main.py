@@ -1,4 +1,4 @@
-from main import combine_files_from_folder_to_stream
+from pdfaker.main import combine_files_from_folder_to_stream
 from pathlib import Path
 from io import BytesIO
 
