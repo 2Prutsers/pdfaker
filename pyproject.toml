@@ -1,0 +1,7 @@
+[project]
+name = "pdfaker"
+version = "0.1.0"
+description = "App to combine JPG, PDF files into one"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
