@@ -18,7 +18,7 @@ dev = [
 ]
 
 [project.scripts]
-pdfaker = "main:main"
+pdfaker = "pdfaker.main:main"
 
 [build-system]
 requires = ["setuptools>=65.0"]
