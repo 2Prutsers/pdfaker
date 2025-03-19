@@ -38,7 +38,10 @@ def combine_files_from_folder_to_stream(source: Path, target: Path | IO[any]):
             pdf_files.append(pdf_bytes)
         elif file.lower().endswith('.pdf'):
             pdf_files.append(file_path)
-        print(f"Appended '{file_path}'")
+        else:
+            print(f"[blue]Skipped[/] '{file_path}'")
+            continue
+        print(f"[yellow]Appended[/] '{file_path}'")
 
     merge_pdfs(pdf_files, target)
     
@@ -51,7 +54,7 @@ def combine_files_from_folder(
     Combine JPG, PNG, PDF files from source folder into one PDF target file.
     """
     combine_files_from_folder_to_stream(source=source, target=target)
-    print(f"Combined PDF created successfully at '{target}'")
+    print(f"[yellow]Combined PDF created successfully at[/] '{target}'")
     
 
 def main():
