@@ -10,8 +10,8 @@ from pathlib import Path
 from rich import print
 
 
-def convert_jpg_to_pdf(jpg_path):
-    image = Image.open(jpg_path).convert('RGB')
+def convert_img_to_pdf(img_path):
+    image = Image.open(img_path).convert('RGB')
     pdf_bytes = io.BytesIO()
     image.save(pdf_bytes, format='PDF')
     pdf_bytes.seek(0)
@@ -34,7 +34,7 @@ def combine_files_from_folder_to_stream(source: Path, target: Path | IO[any]):
     for file in files:
         file_path = os.path.join(source, file)
         if any(file.lower().endswith(t) for t in {'.jpeg', '.jpg', '.png'}):
-            pdf_bytes = convert_jpg_to_pdf(file_path)
+            pdf_bytes = convert_img_to_pdf(file_path)
             pdf_files.append(pdf_bytes)
         elif file.lower().endswith('.pdf'):
             pdf_files.append(file_path)
